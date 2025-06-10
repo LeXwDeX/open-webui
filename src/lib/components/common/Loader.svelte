@@ -32,13 +32,14 @@
 		observer.observe(loaderElement);
 	});
 
-	onDestroy(() => {
+onDestroy(() => {
+	if (observer) {
 		observer.disconnect();
-
-		if (intervalId) {
-			clearInterval(intervalId);
-		}
-	});
+	}
+	if (intervalId) {
+		clearInterval(intervalId);
+	}
+});
 </script>
 
 <div bind:this={loaderElement}>
